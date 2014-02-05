@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html
+	xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<head>
+<link rel="stylesheet" type="text/css" href="css/ModalRename.css">
+</head>
+<body>
+	<form wicket:id="form">
+		<div align="center" wicket:id="feedback"></div>
+		<textarea wicket:id="name" rows="3" cols="60" maxlength="255"
+			autofocus></textarea>
+		<br /> <input wicket:id="buttonOk" type="submit"
+			class="g-button-small" wicket:message="value:rename.ok" /> <input
+			wicket:id="buttonCancel" type="submit" class="g-button-small"
+			wicket:message="value:rename.cancel" />
+	</form>
+</body>
+</html>

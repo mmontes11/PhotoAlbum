@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<setup xmlns="http://databene.org/benerator/0.7.7" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://databene.org/benerator/0.7.7 benerator-0.7.7.xsd">
+
+
+	<include uri="benerator.properties" />
+	<import platforms="db" />
+	<import defaults="true" />
+	<import domains="person" />
+
+
+	<database id="db" url="jdbc:h2:~/H2/PhotoAlbum" driver="org.h2.Driver"
+		user="herramientas" password="desarrollo2013" catalog="PHOTOALBUM"
+		schema="PUBLIC" batch="false" />
+
+
+	<execute uri="db_create.sql" target="db" onError="ignore" />
+
+	<!-- DESCONECTAR BASE DE DATOS !!!! -->
+	<!-- Cambiar count="10" para que genera mas filas ... cuando se acabe -->
+	<!-- para que salga por la salida estandar: consumer="ConsoleExporter", 
+		pero si en un <reference/> se referencia a este falla porque lo saca por 
+		consola y en BD no esta (No samples defined in SampleGenerator) -->
+	<!-- para que meta en BD: consumer="db" -->
+
+	<bean id="idGen" spec="new IncrementGenerator(4)" />
+	<setup>
+		<generate type="USUARIO" count="num_users" consumer="db">
+			<variable name="person" generator="PersonGenerator" />
+			<id name="id" generator="idGen" />
+			<attribute name="email" script="person.email"
+				converter="ToLowerCaseConverter, UniqueStringConverter" />
+			<attribute name="username"
+				script="person.givenName + '.' + person.familyName" converter="ToLowerCaseConverter, 
+		UniqueStringConverter" />
+			<attribute name="password" constant="sdklcmsdlkansdvmcflljñmdkfbgnsdkfmfgn" />
+		</generate>
+	</setup>
+
+	<!-- WARNING: RESPETA LA INTEGRIDAD DE: CONSTRAINT ALBUM_UNIQUE_NAME UNIQUE 
+		(NAME, USER_ID)???? -->
+	<bean id="idGen" spec="new IncrementGenerator(1)" />
+	<bean id="dtGen" spec="new DateTimeGenerator()">
+		<property name='minDate' value='2014-1-01' />
+		<property name='maxDate' value='2014-12-31' />
+	</bean>
+	<setup>
+		<generate type="ALBUM" count="num_albums" consumer="db">
+			<variable name="person" generator="PersonGenerator" />
+			<id name="id" generator="idGen" />
+			<attribute name="name" script="'album_' + person.givenName"
+				converter="ToLowerCaseConverter, UniqueStringConverter" />
+			<attribute name="album_date" generator="dtGen" />
+			<reference name="user_id" source="db" targetType="usuario"
+				cyclic="true" distribution="random" />
+		</generate>
+	</setup>
+
+
+	<bean id="idGen" spec="new IncrementGenerator(1)" />
+	<bean id="dtGen" spec="new DateTimeGenerator()">
+		<property name='minDate' value='2014-1-01' />
+		<property name='maxDate' value='2014-12-31' />
+	</bean>
+	<setup>
+		<generate type="ARCHIVO" count="num_archivos" consumer="db">
+			<variable name="person" generator="PersonGenerator" />
+			<id name="id" generator="idGen" />
+			<attribute name="name" script="person.givenName"
+				converter="ToLowerCaseConverter,UniqueStringConverter" />
+			<attribute name="file" type="binary" />
+			<attribute name="file_small" type="binary" />
+			<attribute name="file_date" generator="dtGen" />
+			<reference name="album_id" source="db" targetType="album"
+				cyclic="true" distribution="random" />
+		</generate>
+	</setup>
+
+	<bean id="idGen" spec="new IncrementGenerator(1)" />
+	<bean id="idGen_album" spec="new IncrementGenerator(1)" />
+	<setup>
+		<generate type="SHARE_INFORMATION_ALBUMS" count="num_albums"
+			consumer="db">
+			<id name="id" generator="idGen" />
+			<attribute name="ALBUM_ID" generator="idGen_album" />
+			<attribute name="USER_ID" constant="1" />
+		</generate>
+	</setup>
+
+	<bean id="idGen" spec="new IncrementGenerator(1)" />
+	<bean id="idGen_archivo" spec="new IncrementGenerator(1)" />
+	<setup>
+		<generate type="SHARE_INFORMATION_ARCHIVOS" count="num_archivos"
+			consumer="db">
+			<id name="id" generator="idGen" />
+			<attribute name="ARCHIVO_ID" generator="idGen_archivo" />
+			<attribute name="USER_ID" constant="1" />
+		</generate>
+	</setup>
+
+	<bean id="idGen" spec="new IncrementGenerator(1)" />
+	<setup>
+		<generate type="TAG" count="num_tags" consumer="db">
+			<variable name="person" generator="PersonGenerator" />
+			<id name="id" generator="idGen" />
+			<attribute name="name" script="'t_' + person.givenName"
+				converter="ToLowerCaseConverter, UniqueStringConverter" />
+		</generate>
+	</setup>
+
+	<bean id="idGen" spec="new IncrementGenerator(1)" />
+	<bean id="idGen_count" spec="new IncrementGenerator(0)" />
+	<setup>
+		<generate type="dummy" count="num_tag_album">
+			<variable name="count" generator="idGen_count" />
+			<generate type="TAG_ALBUM" count="num_albums" consumer="db">
+				<variable name="count_id" generator="idGen" />
+				<id name="id" type="long" script="num_albums*count + count_id" />
+				<id name="TAG_ID" type="long" script="num_albums*count + count_id" />
+				<id name="ALBUM_ID" type="long" script="count_id" />
+			</generate>
+		</generate>
+	</setup>
+
+	<bean id="idGen" spec="new IncrementGenerator(1)" />
+	<bean id="idGen_count" spec="new IncrementGenerator(0)" />
+	<setup>
+		<generate type="dummy" count="num_tag_archivo">
+			<variable name="count" generator="idGen_count" />
+			<generate type="TAG_ARCHIVO" count="num_archivos" consumer="db">
+				<variable name="count_id" generator="idGen" />
+				<id name="id" type="long" script="num_archivos *count+ count_id" />
+				<id name="TAG_ID" type="long" script="num_archivos*count + count_id" />
+				<id name="ARCHIVO_ID" type="long" script="count_id" />
+			</generate>
+		</generate>
+	</setup>
+
+	<bean id="idGen" spec="new IncrementGenerator(1)" />
+	<bean id="dtGen" spec="new DateTimeGenerator()">
+		<property name='minDate' value='2014-1-01' />
+		<property name='maxDate' value='2014-12-31' />
+	</bean>
+	<bean id="idGen_count" spec="new IncrementGenerator(0)" />
+	<setup>
+		<generate type="COMMENT" count="num_comments" consumer="db">
+			<variable name="person" generator="PersonGenerator" />
+			<variable name="count_id" generator="idGen_count" />
+			<id name="id" generator="idGen" />
+			<attribute name="COMMENT_TEXT" script="'c_' + person.givenName"
+				converter="ToLowerCaseConverter" />
+			<attribute name="COMMENT_DATE" generator="dtGen" />
+			<reference name="user_id" source="db" targetType="usuario"
+				cyclic="true" distribution="random" />
+		</generate>
+	</setup>
+	
+	<bean id="idGen" spec="new IncrementGenerator(1)" />
+	<bean id="idGen_count" spec="new IncrementGenerator(0)" />
+	<setup>
+		<generate type="dummy" count="num_comment_archivo">
+			<variable name="count" generator="idGen_count" />
+			<generate type="COMMENT_ARCHIVO" count="num_archivos" consumer="db">
+				<variable name="count_id" generator="idGen" />
+				<id name="id" type="long" script="num_archivos *count+ count_id" />
+				<id name="COMMENT_ID" type="long" script="num_archivos *count + count_id" />
+				<id name="ARCHIVO_ID" type="long" script="count_id" />
+			</generate>
+		</generate>
+	</setup>
+
+	<bean id="idGen" spec="new IncrementGenerator(1)" />
+	<bean id="idGen_count" spec="new IncrementGenerator(0)" />
+	<setup>
+		<generate type="dummy" count="num_comment_album">
+			<variable name="count" generator="idGen_count" />
+			<generate type="COMMENT_ALBUM" count="num_albums" consumer="db">
+				<variable name="count_id" generator="idGen" />
+				<id name="id" type="long" script="num_albums *count+ count_id" />
+				<id name="COMMENT_ID" type="long" script="num_albums *count + count_id" />
+				<id name="ALBUM_ID" type="long" script="count_id" />
+			</generate>
+		</generate>
+	</setup>
+
+	<bean id="idGen" spec="new IncrementGenerator(1)" />
+	<setup>
+		<generate type="LIKE_TABLE" count="num_like" consumer="db">
+			<id name="id" generator="idGen" />
+			<attribute name="MEGUSTA" type="long" constant="1" />
+			<reference name="user_id" source="db" targetType="usuario"
+				cyclic="true" distribution="random" />
+		</generate>
+	</setup>
+	
+	
+	<bean id="idGen" spec="new IncrementGenerator(1)" />
+	<bean id="idGen_count" spec="new IncrementGenerator(0)" />
+	<setup>
+		<generate type="dummy" count="num_like_comment">
+			<variable name="count" generator="idGen_count" />
+			<generate type="LIKE_COMMENT" count="num_comments" consumer="db">
+				<variable name="count_id" generator="idGen" />
+				<id name="id" type="long" script="num_comments *count+ count_id" />
+				<id name="LIKE_ID" type="long" script="num_comments *count + count_id" />
+				<id name="COMMENT_ID" type="long" script="count_id" />
+			</generate>
+		</generate>
+	</setup>
+	
+	
+	<bean id="idGen" spec="new IncrementGenerator(1)" />
+	<bean id="idGen_count" spec="new IncrementGenerator(0)" />
+	<setup>
+		<generate type="dummy" count="num_like_archivo">
+			<variable name="count" generator="idGen_count" />
+			<generate type="LIKE_ARCHIVO" count="num_archivos" consumer="db">
+				<variable name="count_id" generator="idGen" />
+				<id name="id" type="long" script="num_archivos *count+ count_id" />
+				<id name="LIKE_ID" type="long" script="num_archivos *count + count_id" />
+				<id name="ARCHIVO_ID" type="long" script="count_id" />
+			</generate>
+		</generate>
+	</setup>
+	
+	<bean id="idGen" spec="new IncrementGenerator(1)" />
+	<bean id="idGen_count" spec="new IncrementGenerator(0)" />
+	<setup>
+		<generate type="dummy" count="num_like_album">
+			<variable name="count" generator="idGen_count" />
+			<generate type="LIKE_ALBUM" count="num_albums" consumer="db">
+				<variable name="count_id" generator="idGen" />
+				<id name="id" type="long" script="num_albums *count+ count_id" />
+				<id name="LIKE_ID" type="long" script="num_albums *count + count_id" />
+				<id name="ALBUM_ID" type="long" script="count_id" />
+			</generate>
+		</generate>
+	</setup>
+	
+</setup>
+

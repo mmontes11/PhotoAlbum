@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html
+	xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<head></head>
+<body>
+	<wicket:extend>
+		<link rel="stylesheet" type="text/css" href="css/SharedBig.css">
+		<div id="Content">
+			<a wicket:id="linkBack" id="linkBack" class="btn btn-default"><wicket:message
+					key="search.linkBackToSearch" /></a><br /> <br />
+			<form wicket:id="formNavigate">
+				<input type="submit" class="btn btn-success" wicket:id="back"
+					wicket:message="value:image.back" /> <input type="submit"
+					class="btn btn-success" wicket:id="forward"
+					wicket:message="value:image.forward" />
+			</form>
+			<br /> <img wicket:id="img" id="image" /> <br />
+			<div id="SubContent">
+				<wicket:message key="tag.associatedTagPhoto" />
+				<br />
+				<div wicket:id="navigator" id="tagNavigator"></div>
+				<table class="table">
+					<tr wicket:id="tagPageable">
+						<td width="200"><a wicket:id="tagsLink" class="albumsLinks"><span
+								wicket:id="name"></span></a></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</wicket:extend>
+</body>
+</html>

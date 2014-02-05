@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="PhotoAlbum02_webservice">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <dependent-module archiveName="PhotoAlbum02_model-0.9.3-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/PhotoAlbum02_model/PhotoAlbum02_model">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="PhotoAlbum02_webservice"/>
+        <property name="java-output-path" value="/PhotoAlbum02_webservice/target/classes"/>
+    </wb-module>
+</project-modules>

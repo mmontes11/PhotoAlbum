@@ -1,0 +1,109 @@
+.usersImages {
+	border: 10px solid White;
+}
+
+.upload {
+	display: inline-block;
+}
+
+.g-button-small {
+	height: 22px;
+	width: auto;
+	-webkit-border-radius: 2px 2px;
+	border: solid 1px rgb(153, 153, 153);
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(255, 255, 255) ),
+		to(rgb(221, 221, 221) ) );
+	color: #333;
+	text-decoration: none;
+	cursor: pointer;
+	text-align: center;
+	line-height: 1;
+}
+
+.g-button-small:hover {
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(255, 255, 255) ),
+		to(rgb(200, 200, 200) ) );
+	box-shadow: 0pt 2px 2px rgba(0, 0, 0, 0.1);
+	background-color: #e8e8e8;
+}
+
+.file-wrapper {
+	cursor: pointer;
+	display: inline-block;
+	overflow: hidden;
+	position: relative;
+}
+
+::-webkit-file-upload-button { 
+	cursor:pointer; 
+}
+
+.file-wrapper input {
+	cursor: pointer;
+	font-size: 100px;
+	line-height:100%;
+	filter: alpha(opacity = 1);
+	-moz-opacity: 0.01;
+	opacity: 0.01;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.file-wrapper .button {
+	background: #696eff;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	color: #fff;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 11px;
+	font-weight: bold;
+	margin-right: 5px;
+	padding: 4px 18px;
+	text-transform: uppercase;
+}
+
+#navigator {
+	list-style: none;
+	padding: 0; margin: 0;
+
+	overflow: auto;
+}
+#navigator span {
+	float: left;
+	margin-right: 5px;
+}
+#navigator a {
+	margin-right: 4px;
+	float: left;
+	display: inline;
+	padding: 0.3% 5px;
+	color: #000;
+}
+
+#navigator span a {
+	display: inline-block;
+	padding: 0px 5px;
+	border: solid 1px #000;
+	color: #000;
+	text-decoration:none;
+}
+
+#navigator a:hover {
+	background: #000;
+	color: white;
+	text-decoration: none;
+}
+
+#navigator span a:hover {
+	background: #000;
+	color: white;
+	text-decoration: none;
+}
+
+#navigator span span {
+	padding: 2px 1px 1px 5px;
+	font-size: 12pt;
+}

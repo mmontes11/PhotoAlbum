@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<head>
+</head>
+<body>
+	<wicket:extend>
+		<link rel="stylesheet" type="text/css" href="css/SharedUsers.css">
+		<div id="Content">
+			<br />
+			<div wicket:id="dataContainer">
+				<div wicket:id="navigator" id="navigator"></div>
+				<table class="dataview">
+					<tr wicket:id="pageable">
+					<td>
+						<a wicket:id="albums" class="usersLinks"><span wicket:id="email"></span></a>
+					</td>
+					</tr>
+				</table>
+			</div>
+			<wicket:message key="albums.public" />
+			<div wicket:id="dataContainerPublic">
+				<div wicket:id="navigator" id="navigator"></div>
+				<table class="dataview">
+					<tr wicket:id="pageable">
+					<td>
+						<a wicket:id="albums" class="usersLinks"><span wicket:id="email"></span></a>
+					</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</wicket:extend>
+</body>
+</html>

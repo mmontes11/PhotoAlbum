@@ -1,0 +1,53 @@
+.feedbackPanelERROR {
+	color: red;
+}
+
+.feedbackPanelINFO {
+	color: green;
+}
+
+#header {
+	margin: 20px 0px 10px;
+	border-style: solid;
+	border-color: #3276B1;
+	border-width: 1px 0px;
+	line-height: 70px;
+	background-color: #eee;
+}
+
+#langs {
+	align: right;
+	position: absolute;
+	top: 0px;
+	right: 5px;
+}
+
+#user {
+	align: right;
+	position: relative;
+	top: 0;
+	right: 0;
+}
+
+#user a {
+	color:#e30505;
+}
+
+#linkHome {
+	text-decoration: none;
+	color: black;
+}
+
+.appName {
+	font-family: 'Iceland', cursive;
+	letter-spacing: 8px;
+	font-size: 30pt;
+}
+
+input {
+	width: 200px;
+}
+
+input[type=checkbox] {
+	width: auto;
+}

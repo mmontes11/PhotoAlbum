@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html
+	xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<head></head>
+<body>
+	<wicket:extend>
+		<link rel="stylesheet" type="text/css" href="css/BasePageAuth.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<div id="Menu">
+			<ul class="bmenu">
+				<li><wicket:link>
+				<a wicket:id="hottestPics"><span class="glyphicon glyphicon-sort-by-attributes"></span>&nbsp<wicket:message key="baseA.linkToHottestPics" /></a>
+					</wicket:link></li>
+				<br />
+				<li><wicket:link>
+				<a wicket:id="albums"><span class="glyphicon glyphicon-book"></span>&nbsp<wicket:message key="baseA.linkToAlbums" /></a>
+					</wicket:link></li>
+				<br />
+				<li><wicket:link>
+						<a wicket:id="sharedUserAlbums"><span class="glyphicon glyphicon-share-alt"></span>&nbsp<wicket:message
+								key="baseA.linkToSharedUserAlbums" /></a>
+					</wicket:link></li>
+				<br />
+				<li><wicket:link>
+						<a wicket:id="profile"><span class="glyphicon glyphicon-user"></span>&nbsp<wicket:message
+								key="baseA.linkToProfile" /></a>
+					</wicket:link></li>
+				<br />
+				<li><wicket:link>
+						<a wicket:id="search"><span class="glyphicon glyphicon-search"></span>&nbsp<wicket:message key="baseA.linkToSearch" /></a>
+					</wicket:link></li>
+			</ul>
+		</div>
+		<wicket:child />
+	</wicket:extend>
+</body>
+</html>

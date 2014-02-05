@@ -1,0 +1,54 @@
+.g-button-small {
+	height: 22px;
+	width: auto;
+	-webkit-border-radius: 2px 2px;
+	border: solid 1px rgb(153, 153, 153);
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(255, 255, 255) ),
+		to(rgb(221, 221, 221) ) );
+	color: #333;
+	text-decoration: none;
+	cursor: pointer;
+	text-align: center;
+	line-height: 1;
+}
+
+.g-button-small:hover {
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(255, 255, 255) ),
+		to(rgb(200, 200, 200) ) );
+	box-shadow: 0pt 2px 2px rgba(0, 0, 0, 0.1);
+	background-color: #e8e8e8;
+}
+
+.g-button-navigate-big {
+	height: 36px;
+	width: 205px;
+	background-color: #c4c4c4;
+	-webkit-border-radius: 2px 2px;
+	border: solid 1px rgb(153, 153, 153);
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(240, 240, 240) ),
+		to(rgb(120, 120, 120) ) );
+	color: #333;
+	text-decoration: none;
+	cursor: pointer;
+	text-align: center;
+	line-height: 1;
+}
+
+.g-button-navigate-big:hover {
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(255, 255, 255) ),
+		to(rgb(100, 100, 100) ) );
+	box-shadow: 0pt 2px 2px rgba(0, 0, 0, 0.1);
+	background-color: #b5b5b5;
+}
+
+#extra td {
+	padding: 0px 10px;
+}
+
+#linkBack {
+	color: black;
+}
+
+#image {
+	max-width: 100%;
+}

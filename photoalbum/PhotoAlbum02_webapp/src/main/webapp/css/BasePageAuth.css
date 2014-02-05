@@ -1,0 +1,53 @@
+#Menu {
+	float: left;
+	width: 200px;
+	padding: 15px;
+	background-color: #eee;
+	border: 1px dashed #999;
+}
+
+#Content {
+	padding-left: 2%;
+	padding-right: 30%;
+	overflow: hidden
+}
+
+#Content2 {
+	padding-left: 2%;
+	padding-right: 5%;
+	overflow: hidden
+}
+
+
+#SubContent {
+	padding-top: 2%;
+	overflow: hidden
+}
+
+.bmenu {
+	padding: 0px;
+	margin: 0 0 10px 0;
+	position: relative;
+}
+
+.bmenu li {
+	display: block;
+}
+
+.bmenu li a {
+	color: #3276B1;
+	display: block;
+	letter-spacing: 1.5px;
+	font-size: 14pt;
+	text-decoration: none;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+.bmenu li a:hover {
+	padding-left: 10px;
+	text-decoration: underline;
+}

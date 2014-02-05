@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<head>
+</head>
+<body>
+	<wicket:extend>
+		<link rel="stylesheet" type="text/css" href="css/Share.css">
+		<div id="Content">
+			
+			<form wicket:id="form">
+				<table>
+					<tr>
+						<td><p><wicket:message key="share.emailOrUsername" /> <input wicket:id="shareEmailOrUsername" type="text" /></p></td>
+						<td><input type="submit" wicket:id="ajax-button" class="g-button-small"
+							wicket:message="value:share.submit" /></td>
+						<td><div wicket:id="feedback"></div></td>
+					</tr>
+				</table>
+			</form>
+			<wicket:message key="share.sharedPhotoWith" />
+			<div wicket:id="navigator" id="navigator"></div>
+			<table class="dataview">
+				<tr wicket:id="pageable">
+					<td width="200"><span wicket:id="email"></span></td>
+					<td><a wicket:id="delete"><img src="images/minus.png"
+							wicket:message="title:image.delete"></a></td>
+				</tr>
+			</table>
+		</div>
+	</wicket:extend>
+</body>
+</html>

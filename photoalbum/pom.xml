@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>dc.fi.udc.es</groupId>
+	<artifactId>PhotoAlbum02</artifactId>
+	<packaging>pom</packaging>
+	<version>0.9.3-SNAPSHOT</version>
+	<name>PhotoAlbum02 -- Herramientas de Desarrollo 2013/2014</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<spring.version>3.1.0.RELEASE</spring.version>
+		<hibernate.version>3.6.8.Final</hibernate.version>
+		<javassist.version>3.12.1.GA</javassist.version>
+		<slf4j-log4j12.version>1.6.4</slf4j-log4j12.version>
+		<commons-email.version>1.2</commons-email.version>
+		<wicket.version>6.11.0</wicket.version>
+		<h2.version>1.3.173</h2.version>
+		<tomcat.version>7.0.23</tomcat.version>
+		<wicket-spring-annot.version>1.3.7</wicket-spring-annot.version>
+		<servlet.version>2.5</servlet.version>
+		<junit.version>4.10</junit.version>
+		<imgscalr.version>4.1</imgscalr.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<compiler.version>1.7</compiler.version>
+	</properties>
+
+	<issueManagement>
+		<system>Redmine</system>
+		<url>http://git.fic.udc.es/redmine/login</url>
+	</issueManagement>
+
+	<scm>
+		<connection>scm:git:git@git.fic.udc.es:photoalbum02.git</connection>
+		<developerConnection>scm:git:git@git.fic.udc.es:photoalbum02.git</developerConnection>
+		<tag>HEAD</tag>
+		<url>scm:git:git@git.fic.udc.es:photoalbum02.git</url>
+	</scm>
+
+	<ciManagement>
+		<system>continuum</system>
+		<url>http://jenkins.fic.udc.es/</url>
+		<notifiers>
+			<notifier>
+				<type>mail</type>
+				<sendOnError>true</sendOnError>
+				<sendOnFailure>true</sendOnFailure>
+				<sendOnSuccess>false</sendOnSuccess>
+				<sendOnWarning>false</sendOnWarning>
+				<configuration>
+					<address>iago.veloso@udc.es</address>
+				</configuration>
+			</notifier>
+			<notifier>
+				<type>mail</type>
+				<sendOnError>true</sendOnError>
+				<sendOnFailure>true</sendOnFailure>
+				<sendOnSuccess>false</sendOnSuccess>
+				<sendOnWarning>false</sendOnWarning>
+				<configuration>
+					<address>martin.montes@udc.es</address>
+				</configuration>
+			</notifier>
+			<notifier>
+				<type>mail</type>
+				<sendOnError>true</sendOnError>
+				<sendOnFailure>true</sendOnFailure>
+				<sendOnSuccess>false</sendOnSuccess>
+				<sendOnWarning>false</sendOnWarning>
+				<configuration>
+					<address>carlos.rodriguez@udc.es</address>
+				</configuration>
+			</notifier>
+		</notifiers>
+	</ciManagement>
+
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+			<comments>A business-friendly OSS license</comments>
+		</license>
+	</licenses>
+
+	<organization>
+		<name>Grupo 02</name>
+		<url>http://fic.udc.es</url>
+	</organization>
+
+	<description> Aplicacion web con el objetivo de compartir votos</description>
+	<developers>
+		<developer>
+			<id>iago</id>
+			<name>Iago Veloso Abalo</name>
+			<email>iago.veloso@udc.es</email>
+			<organization>Grupo 02</organization>
+			<organizationUrl>http://fic.udc.es</organizationUrl>
+			<roles>
+				<role>architect</role>
+				<role>developer</role>
+			</roles>
+			<timezone>-6</timezone>
+		</developer>
+		<developer>
+			<id>martin</id>
+			<name>Martin Montes Pérez</name>
+			<email>martin.montes@udc.es</email>
+			<organization>Grupo 02</organization>
+			<organizationUrl>http://fic.udc.es</organizationUrl>
+			<roles>
+				<role>architect</role>
+				<role>developer</role>
+			</roles>
+			<timezone>-6</timezone>
+		</developer>
+		<developer>
+			<id>carlos</id>
+			<name>Carlos Rodríguez Corral</name>
+			<email>carlos.rodriguez@udc.es</email>
+			<organization>Grupo 02</organization>
+			<organizationUrl>http://fic.udc.es</organizationUrl>
+			<roles>
+				<role>architect</role>
+				<role>developer</role>
+			</roles>
+			<timezone>-6</timezone>
+		</developer>
+	</developers>
+
+	<!-- <mailingLists> -->
+	<!-- <mailingList> -->
+	<!-- <name>User List</name> -->
+	<!-- <subscribe>user-subscribe@127.0.0.1</subscribe> -->
+	<!-- <unsubscribe>user-unsubscribe@127.0.0.1</unsubscribe> -->
+	<!-- <post>user@127.0.0.1</post> -->
+	<!-- <archive>http://127.0.0.1/user/</archive> -->
+	<!-- <otherArchives> -->
+	<!-- <otherArchive>http://base.google.com/base/1/127.0.0.1</otherArchive> -->
+	<!-- </otherArchives> -->
+	<!-- </mailingList> -->
+	<!-- </mailingLists> -->
+
+	<dependencies>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javassist</groupId>
+			<artifactId>javassist</artifactId>
+			<version>${javassist.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${slf4j-log4j12.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-email</artifactId>
+			<version>${commons-email.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.wicket</groupId>
+			<artifactId>wicket-extensions</artifactId>
+			<version>${wicket.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.wicket</groupId>
+			<artifactId>wicket-spring</artifactId>
+			<version>${wicket.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.wicket</groupId>
+			<artifactId>wicket-devutils</artifactId>
+			<version>${wicket.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.imgscalr</groupId>
+			<artifactId>imgscalr-lib</artifactId>
+			<version>${imgscalr.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-jdbc</artifactId>
+			<version>${tomcat.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>${h2.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>${servlet.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.wicket</groupId>
+			<artifactId>wicket-spring-annot</artifactId>
+			<version>${wicket-spring-annot.version}</version>
+		</dependency>
+		<!--  Jersey -->
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-core</artifactId>
+			<version>1.17.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-json</artifactId>
+			<version>1.17.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-client</artifactId>
+			<version>1.17.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey.contribs</groupId>
+			<artifactId>jersey-apache-client</artifactId>
+			<version>1.17.1</version>
+		</dependency>		
+		<dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-server</artifactId>
+            <version>1.17.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-servlet</artifactId>
+            <version>1.17.1</version>
+        </dependency>
+        <!-- Jersey + Spring -->
+		<dependency>
+			<groupId>com.sun.jersey.contribs</groupId>
+			<artifactId>jersey-spring</artifactId>
+			<version>1.17.1</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-web</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-beans</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-context</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-aop</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>		
+	</dependencies>
+	<build>
+		<finalName>PhotoAlbum02</finalName>
+		<resources>
+			<resource>
+				<filtering>false</filtering>
+				<directory>src/main/resources</directory>
+			</resource>
+			<resource>
+				<filtering>false</filtering>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**</include>
+				</includes>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.15</version>
+				<configuration>
+					<skipTests>false</skipTests>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.0</version>
+				<configuration>
+					<server>TomcatServer</server>
+					<url>http://localhost:9980/manager/text</url>
+					<path>/PhotoAlbum</path>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>3.0</version>
+				<configuration>
+					<port>9000</port>
+					<tempWebappDirectory>${basedir}/target/site/tmp</tempWebappDirectory>
+					<locales>en,es</locales>
+					<reportPlugins>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-project-info-reports-plugin</artifactId>
+							<version>2.4</version>
+							<reportSets>
+								<reportSet>
+									<reports>
+										<report>index</report>
+										<report>project-team</report>
+										<report>license</report>
+										<!-- <report>mailing-list</report> -->
+										<report>dependencies</report>
+										<report>plugin-management</report>
+										<report>cim</report>
+										<report>issue-tracking</report>
+										<report>scm</report>
+										<report>summary</report>
+									</reports>
+								</reportSet>
+							</reportSets>
+						</plugin>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-surefire-report-plugin</artifactId>
+							<version>2.11</version>
+							<reportSets>
+								<reportSet>
+									<reports>
+										<report>report</report>
+									</reports>
+								</reportSet>
+							</reportSets>
+						</plugin>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-checkstyle-plugin</artifactId>
+							<version>2.8</version>
+							<configuration>
+								<configLocation>src/main/resources/checkstyleMy.xml</configLocation>
+							</configuration>
+							<reportSets>
+								<reportSet>
+									<reports>
+										<report>checkstyle</report>
+									</reports>
+								</reportSet>
+							</reportSets>
+						</plugin>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-javadoc-plugin</artifactId>
+							<version>2.8</version>
+						</plugin>
+
+					</reportPlugins>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	
+	<repositories>
+		<repository>
+			<id>snapshot-repository.java.net</id>
+			<name>Java.net Snapshot Repository for Maven</name>
+			<url>https://maven.java.net/content/repositories/snapshots/</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
+  <modules>
+    <module>PhotoAlbum02_model</module>
+    <module>PhotoAlbum02_webapp</module>
+    <module>PhotoAlbum02_webservice</module>
+  </modules>
+</project>

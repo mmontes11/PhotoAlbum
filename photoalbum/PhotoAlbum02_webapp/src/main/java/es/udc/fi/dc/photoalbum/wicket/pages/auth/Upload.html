@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html
+	xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<head></head>
+<body>
+	<wicket:extend>
+		<link rel="stylesheet" type="text/css" href="css/Upload.css">
+		<div id="Content">
+			<h2>
+				<wicket:message key="albums.name" />
+				<small> <span wicket:id="album"></span><br /></small>
+			</h2>
+			<form wicket:id="upload">
+				<div class="well">
+					<fieldset class="upload">
+						<legend>
+							<wicket:message key="upload.form" />
+						</legend>
+						<table>
+							<tr>
+								<td><span class="file-wrapper"> <input
+										wicket:id="fileInput" type="file" multiple /> <span
+										class="button"><wicket:message key="upload.choose" /></span>
+								</span></td>
+								<td><input type="submit" wicket:id="ajax-button"
+									class="g-button-small" wicket:message="value:upload.submit" /></td>
+							</tr>
+						</table>
+					</fieldset>
+				</div>
+			</form>
+			<div wicket:id="uploadFeedback"></div>
+			<br>
+			<div wicket:id="dataContainer">
+				<div wicket:id="navigator" id="navigator"></div>
+				<table class="dataview" cellpadding="10%">
+					<span wicket:id="pageable">
+						<tr>
+							<a wicket:id="big"><img wicket:id="img" class="img-thumbnail"/></a>
+							<a wicket:id="share"><img src="images/share.gif"
+								wicket:message="title:image.share"></a>
+							<a wicket:id="tag"><img src="images/tag.png"
+								wicket:message="title:tag.tagPhoto"></a>
+						</tr>
+					</span>
+				</table>
+			</div>
+			<div wicket:id="modalLikes"></div>
+			<div wicket:id="modalDisLikes"></div>
+			<a wicket:id="link"><img wicket:id="like" src="images/like.gif"></a>
+			<a wicket:id="likes"><span wicket:id="numLikes"></span></a> <a
+				wicket:id="link2"><img wicket:id="dislike"
+				src="images/dislike.gif"></a> <a wicket:id="dislikes"><span
+				wicket:id="numDisLikes"></span></a> <br />
+
+			<div id="SubContent">
+				<wicket:message key="comment.yourComments" />
+				<br />
+				<form wicket:id="form">
+					<textarea wicket:id="comment" class="form-control" rows="5"
+						cols="60" maxlength="255" autofocus></textarea>
+					<input wicket:id="buttonCommentOk" type="submit"
+						class="btn btn-info" wicket:message="value:comment.send" />
+				</form>
+			</div>
+			<div wicket:id="dataContainerComment">
+				<div wicket:id="commentNavigator" id="navigator"></div>
+				<table class="dataview" width="600">
+					<tr wicket:id="commentPageable">
+						<div wicket:id="modal"></div>
+						<div wicket:id="modalLikes"></div>
+						<div wicket:id="modalDisLikes"></div>
+						<td>
+
+							<div class="panel panel-info">
+								<div class="panel-body">
+
+
+									<span wicket:id="commentDate"
+										style="font-size: 12px; padding-right: 0em"></span> - <b><a
+										wicket:id="userComment" style="font-size: 14px"></a></b><br />
+								</div>
+
+								<div class="panel-footer">
+									<span wicket:id="comment"></span> <br />
+									<hr>
+									<a wicket:id="link"><img wicket:id="like"
+										src="images/like.gif"></a> <a wicket:id="likes"><span
+										wicket:id="numLikes"></span></a> <a wicket:id="link2"><img
+										wicket:id="dislike" src="images/dislike.gif"></a> <a
+										wicket:id="dislikes"><span wicket:id="numDisLikes"></span></a>
+									&nbsp&nbsp&nbsp&nbsp&nbsp <a wicket:id="commentDelete"><img
+										src="images/minus.png" wicket:message="title:albums.delete">
+									</a><a wicket:id="rename"><img src="images/edit.gif"
+										wicket:message="title:edit.edit"></a>
+								</div>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+
+			<div id="SubContent">
+				<wicket:message key="share.yourShare" />
+				<br />
+				<div wicket:id="shareNavigator" id="navigator"></div>
+				<table class="table">
+					<tr wicket:id="sharePageable">
+						<td width="200"><span wicket:id="email"></span></td>
+						<td><a wicket:id="shareDelete"><img
+								src="images/minus.png" wicket:message="title:albums.delete"></a></td>
+					</tr>
+				</table>
+			</div>
+
+			<div id="SubContent">
+				<wicket:message key="tag.associatedTagAlbum" />
+				<div wicket:id="tagsNavigator" id="navigator"></div>
+				<table class="table">
+					<tr wicket:id="tagsPageable">
+						<td width="200"><a wicket:id="tagsLink" class="albumsLinks"><span
+								wicket:id="name"></span></a></td>
+						<td><a wicket:id="tagsDelete"><img src="images/minus.png"
+								wicket:message="title:tag.deleted"></a></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</wicket:extend>
+</body>
+</html>

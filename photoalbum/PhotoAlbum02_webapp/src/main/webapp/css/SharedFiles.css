@@ -1,0 +1,50 @@
+#linkBack {
+	color: black;
+}
+
+.usersImages {
+	border: 10px solid White;
+}
+
+#navigator {
+	list-style: none;
+	padding: 0; margin: 0;
+
+	overflow: auto;
+}
+#navigator span {
+	float: left;
+	margin-right: 5px;
+}
+#navigator a {
+	margin-right: 4px;
+	float: left;
+	display: inline;
+	padding: 0.3% 5px;
+	color: #000;
+}
+
+#navigator span a {
+	display: inline-block;
+	padding: 0px 5px;
+	border: solid 1px #000;
+	color: #000;
+	text-decoration:none;
+}
+
+#navigator a:hover {
+	background: #000;
+	color: white;
+	text-decoration: none;
+}
+
+#navigator span a:hover {
+	background: #000;
+	color: white;
+	text-decoration: none;
+}
+
+#navigator span span {
+	padding: 2px 1px 1px 5px;
+	font-size: 12pt;
+}

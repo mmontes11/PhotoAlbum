@@ -1,4 +1,4 @@
 photoalbum
 ==========
 
-A Java EE web application developed with Wicket + Spring + Hibernate with its corresponding REST service developed with Jersey
+A Wicket + Spring + Hibernate web application with its corresponding Jersey REST service
